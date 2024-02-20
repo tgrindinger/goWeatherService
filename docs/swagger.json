@@ -1,0 +1,60 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This service reports the current weather for a given location",
+        "title": "Current Weather Report",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/current": {
+            "get": {
+                "description": "Get current weather report",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Weather"
+                ],
+                "summary": "Get current weather report",
+                "parameters": [
+                    {
+                        "type": "number",
+                        "description": "Latitude (values between -90 and +90)",
+                        "name": "latitude",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "number",
+                        "description": "Longitude (values between -180 and +180)",
+                        "name": "longitude",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/managers.WeatherReport"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "managers.WeatherReport": {
+            "type": "object",
+            "properties": {
+                "condition": {
+                    "type": "string"
+                },
+                "temperature": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

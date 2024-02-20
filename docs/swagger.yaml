@@ -1,0 +1,39 @@
+definitions:
+  managers.WeatherReport:
+    properties:
+      condition:
+        type: string
+      temperature:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This service reports the current weather for a given location
+  title: Current Weather Report
+  version: "1.0"
+paths:
+  /current:
+    get:
+      description: Get current weather report
+      parameters:
+      - description: Latitude (values between -90 and +90)
+        in: query
+        name: latitude
+        required: true
+        type: number
+      - description: Longitude (values between -180 and +180)
+        in: query
+        name: longitude
+        required: true
+        type: number
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/managers.WeatherReport'
+      summary: Get current weather report
+      tags:
+      - Weather
+swagger: "2.0"
